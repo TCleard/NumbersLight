@@ -14,6 +14,8 @@ abstract class AFragment<P : APresenter<*>> : Fragment(), IViewController {
     @Inject
     protected lateinit var presenter: P
 
+    private var isFirstCreation = true
+
     val isViewCreated: Boolean
         get() = view != null
 

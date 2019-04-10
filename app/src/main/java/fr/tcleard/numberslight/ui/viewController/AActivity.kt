@@ -12,7 +12,6 @@ import android.support.v4.util.Pair
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import fr.tcleard.numberslight.App
-import fr.tcleard.numberslight.core.manager.IKeyboardManager
 import fr.tcleard.numberslight.core.presenter.APresenter
 import fr.tcleard.numberslight.di.component.AppComponent
 import javax.inject.Inject
