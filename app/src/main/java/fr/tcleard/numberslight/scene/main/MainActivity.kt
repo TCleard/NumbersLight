@@ -23,7 +23,7 @@ class MainActivity : AActivity<MainPresenter>(), MainPresenter.MainView, ListFra
 
         presenter.attach(this)
 
-        (mainListFragment as ListFragment).listener = this
+        (mainListFragment as ListFragment).setListener(this)
 
     }
 

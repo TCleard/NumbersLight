@@ -5,13 +5,12 @@ import android.view.ViewGroup
 import fr.tcleard.numberslight.R
 import fr.tcleard.numberslight.core.manager.IImageManager
 import fr.tcleard.numberslight.scene.main.list.adapter.vm.ItemViewModel
-import fr.tcleard.numberslight.ui.adapter.AViewHolder
 import kotlinx.android.synthetic.main.itemview_item.view.*
 
 class ItemViewHolder(
         parent: ViewGroup,
         private val imageManager: IImageManager
-) : AViewHolder<ItemViewModel>(parent, R.layout.itemview_item) {
+) : AItemViewHolder(parent, R.layout.itemview_item) {
 
     private var imageRequest: IImageManager.ImageRequest? = null
 

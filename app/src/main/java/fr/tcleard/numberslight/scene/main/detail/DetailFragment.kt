@@ -5,11 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import fr.tcleard.numberslight.R
+import fr.tcleard.numberslight.core.manager.IImageManager
 import fr.tcleard.numberslight.core.model.Item
 import fr.tcleard.numberslight.ui.viewController.AFragment
 import kotlinx.android.synthetic.main.fragment_detail.*
+import javax.inject.Inject
 
 class DetailFragment : AFragment<DetailPresenter>(), DetailPresenter.DetailView {
+
+    @Inject
+    lateinit var imageManager: IImageManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,4 +40,25 @@ class DetailFragment : AFragment<DetailPresenter>(), DetailPresenter.DetailView 
         presenter.setItem(item)
     }
 
+    /** DetailView **/
+
+    private var imageRequest: IImageManager.ImageRequest? = null
+
+    override fun showImage(url: String) {
+        if (imageRequest?.url != url) {
+            imageRequest?.cancel()
+            detailImage.setImageBitmap(null)
+            detailImage.visibility = View.VISIBLE
+            imageRequest = if (url.isNotBlank()) {
+                imageManager.loadImage(url, detailImage)
+            } else {
+                detailImage.visibility = View.GONE
+                null
+            }
+        }
+    }
+
+    override fun showText(text: String) {
+        detailText.text = text
+    }
 }

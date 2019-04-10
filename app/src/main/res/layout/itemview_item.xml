@@ -4,14 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:padding="@dimen/paddingRegular"
     android:background="@drawable/background_item"
     android:layout_height="wrap_content">
+
+    <android.support.constraint.Guideline
+        android:id="@+id/itemSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2"/>
 
     <TextView
         android:id="@+id/itemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/marginBig"
         android:autoSizeMaxTextSize="@dimen/textRegular"
         android:autoSizeMinTextSize="@dimen/textSmall"
         android:autoSizeTextType="uniform"
@@ -20,6 +27,7 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/itemSeparator"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="1"/>
 
@@ -39,7 +47,7 @@
         android:layout_margin="@dimen/marginBig"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/itemName"
+        app:layout_constraintStart_toStartOf="@id/itemSeparator"
         app:layout_constraintTop_toTopOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>
