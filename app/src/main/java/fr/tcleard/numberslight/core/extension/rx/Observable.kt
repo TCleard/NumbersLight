@@ -13,7 +13,7 @@ fun <T> Observable<T>.sub(
             onNext.invoke(it)
         }, {
             it.printStackTrace()
-            onError?.invoke((it as? AError) ?: AError())
+            onError?.invoke(AError.create(it))
         }, {
             onComplete?.invoke()
         })

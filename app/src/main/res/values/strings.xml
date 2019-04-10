@@ -1,3 +1,18 @@
 <resources>
+
     <string name="app_name">NumbersLight</string>
+
+    <string name="ok">OK</string>
+    <string name="tryAgain">Try again</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="listPtr">Pull to refresh the list</string>
+
+    <string name="errorTitleList">Unable to load the list</string>
+    <string name="errorTitleDetail">Unable to load the detail</string>
+
+    <string name="errorMessageNoConnection">No internet connection</string>
+    <string name="errorMessageTimeOut">Connection timed out</string>
+    <string name="errorMessageDefault">Try again later</string>
+
 </resources>

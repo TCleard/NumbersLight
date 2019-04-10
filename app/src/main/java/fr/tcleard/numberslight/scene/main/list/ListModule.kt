@@ -2,6 +2,7 @@ package fr.tcleard.numberslight.scene.main.list
 
 import dagger.Module
 import dagger.Provides
+import fr.tcleard.numberslight.core.error.IErrorVisitor
 import fr.tcleard.numberslight.core.manager.IImageManager
 import fr.tcleard.numberslight.core.service.IItemService
 import fr.tcleard.numberslight.di.SceneScope
@@ -13,8 +14,8 @@ class ListModule {
 
     @Provides
     @SceneScope
-    fun providePresenter(itemService: IItemService): ListPresenter =
-            ListPresenter(itemService)
+    fun providePresenter(itemService: IItemService, errorVisitor: IErrorVisitor): ListPresenter =
+            ListPresenter(itemService, errorVisitor)
 
     @Provides
     @SceneScope

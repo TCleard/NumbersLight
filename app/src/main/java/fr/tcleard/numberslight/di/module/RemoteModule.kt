@@ -1,8 +1,6 @@
 package fr.tcleard.numberslight.di.module
 
 import android.os.Build
-import android.util.Log
-import com.moczul.ok2curl.CurlInterceptor
 import dagger.Module
 import dagger.Provides
 import fr.tcleard.numberslight.BuildConfig
@@ -13,7 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.jackson.JacksonConverterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 @Module
@@ -37,13 +35,10 @@ class RemoteModule(private val baseUrl: String = BuildConfig.BASE_URL) {
             val loggingInterceptor = HttpLoggingInterceptor()
             loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
             okHttpBuilder.addInterceptor(loggingInterceptor)
-            okHttpBuilder.addInterceptor(CurlInterceptor {
-                Log.d("Curl", it)
-            })
         }
         return Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(okHttpBuilder.build())
                 .build()

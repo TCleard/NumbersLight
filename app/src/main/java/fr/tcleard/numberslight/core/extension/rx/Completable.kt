@@ -12,5 +12,5 @@ fun Completable.sub(
             onComplete?.invoke()
         }, {
             it.printStackTrace()
-            onError?.invoke((it as? AError) ?: AError())
+            onError?.invoke(AError.create(it))
         })

@@ -12,5 +12,5 @@ fun <T> Single<T>.sub(
             onSuccess.invoke(it)
         }, {
             it.printStackTrace()
-            onError?.invoke((it as? AError) ?: AError())
+            onError?.invoke(AError.create(it))
         })
