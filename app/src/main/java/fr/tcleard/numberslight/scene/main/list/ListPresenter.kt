@@ -5,6 +5,7 @@ import fr.tcleard.numberslight.core.presenter.APresenter
 import fr.tcleard.numberslight.core.presenter.IView
 import fr.tcleard.numberslight.core.service.IItemService
 import fr.tcleard.numberslight.core.service.IService
+import fr.tcleard.numberslight.scene.main.list.adapter.vm.ItemViewModel
 import javax.inject.Inject
 
 class ListPresenter @Inject constructor(
@@ -21,8 +22,8 @@ class ListPresenter @Inject constructor(
         itemService.getItems()
                 .compose(IService.onIoToMainForSingle())
                 .doAfterTerminate { view?.showLoading(false) }
-                .sub(onSuccess = {
-                    view?.showItems()
+                .sub(onSuccess = { items ->
+                    view?.showItems(items.map { ItemViewModel(it) })
                 })
     }
 
@@ -30,7 +31,7 @@ class ListPresenter @Inject constructor(
 
         fun showLoading(loading: Boolean)
 
-        fun showItems()
+        fun showItems(items: List<ItemViewModel>)
 
     }
 

@@ -2,6 +2,7 @@ package fr.tcleard.numberslight.di.component
 
 import android.app.Application
 import dagger.Component
+import fr.tcleard.numberslight.core.manager.IImageManager
 import fr.tcleard.numberslight.core.service.IItemService
 import fr.tcleard.numberslight.di.ApplicationScope
 import fr.tcleard.numberslight.di.module.AppModule
@@ -20,5 +21,8 @@ interface AppComponent {
 
     /** Services **/
     fun itemService(): IItemService
+
+    /** Managers **/
+    fun imageManager(): IImageManager
 
 }

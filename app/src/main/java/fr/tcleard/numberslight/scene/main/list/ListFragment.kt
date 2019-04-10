@@ -1,14 +1,21 @@
 package fr.tcleard.numberslight.scene.main.list
 
 import android.os.Bundle
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import fr.tcleard.numberslight.R
+import fr.tcleard.numberslight.scene.main.list.adapter.ItemAdapter
+import fr.tcleard.numberslight.scene.main.list.adapter.vm.ItemViewModel
 import fr.tcleard.numberslight.ui.viewController.AFragment
 import kotlinx.android.synthetic.main.fragment_list.*
+import javax.inject.Inject
 
 class ListFragment : AFragment<ListPresenter>(), ListPresenter.ListView {
+
+    @Inject
+    lateinit var adapter: ItemAdapter
 
     var listener: Listener? = null
 
@@ -33,6 +40,9 @@ class ListFragment : AFragment<ListPresenter>(), ListPresenter.ListView {
             presenter.getItems()
         }
 
+        listContent.layoutManager = LinearLayoutManager(requireContext())
+        listContent.adapter = adapter
+
         presenter.attach(this)
 
     }
@@ -43,8 +53,8 @@ class ListFragment : AFragment<ListPresenter>(), ListPresenter.ListView {
         listRefresh.isRefreshing = loading
     }
 
-    override fun showItems() {
-
+    override fun showItems(items: List<ItemViewModel>) {
+        adapter.setItems(*items.toTypedArray())
     }
 
     /** Listeners**/
