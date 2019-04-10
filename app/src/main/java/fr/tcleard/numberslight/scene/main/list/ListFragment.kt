@@ -21,8 +21,6 @@ class ListFragment : AFragment<ListPresenter>(), ListPresenter.ListView {
                 .build()
                 .inject(this)
 
-        presenter.attach(this)
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -30,7 +28,26 @@ class ListFragment : AFragment<ListPresenter>(), ListPresenter.ListView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        listRefresh.setOnRefreshListener {
+            presenter.getItems()
+        }
+
+        presenter.attach(this)
+
     }
+
+    /** ListView **/
+
+    override fun showLoading(loading: Boolean) {
+        listRefresh.isRefreshing = loading
+    }
+
+    override fun showItems() {
+
+    }
+
+    /** Listeners**/
 
     interface Listener {
 

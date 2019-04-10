@@ -15,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "BASE_URL", "\"http://dev.tapptic.com/test/json.php/\""
     }
     buildTypes {
         release {
@@ -39,6 +40,20 @@ dependencies {
     // RxKotlin
     implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+
+    // Retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.4.0"
+    implementation "com.squareup.retrofit2:converter-jackson:2.4.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:3.11.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:2.2.0"
+    implementation "com.github.mrmike:ok2curl:0.4.5"
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.6.1@aar") {
+        transitive = true
+        exclude group: "com.android.support"
+    }
+    kapt "com.github.bumptech.glide:compiler:4.7.1"
 
     // Tests
     testImplementation 'junit:junit:4.12'

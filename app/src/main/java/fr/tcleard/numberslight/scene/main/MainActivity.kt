@@ -41,11 +41,11 @@ class MainActivity : AActivity<MainPresenter>(), MainPresenter.MainView, ListFra
     /** MainView **/
 
     override fun showListFragment(show: Boolean) {
-        if (show && !mainListFragment.isVisible) {
+        if (show) {
             fragmentTransaction {
                 show(mainListFragment)
             }
-        } else if (!show && mainListFragment.isVisible) {
+        } else {
             fragmentTransaction {
                 hide(mainListFragment)
             }
@@ -53,11 +53,11 @@ class MainActivity : AActivity<MainPresenter>(), MainPresenter.MainView, ListFra
     }
 
     override fun showDetailFragment(show: Boolean) {
-        if (show && !mainDetailFragment.isVisible) {
+        if (show) {
             fragmentTransaction {
                 show(mainDetailFragment)
             }
-        } else if (!show && mainDetailFragment.isVisible) {
+        } else {
             fragmentTransaction {
                 hide(mainDetailFragment)
             }
