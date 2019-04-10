@@ -3,6 +3,8 @@ package fr.tcleard.numberslight.scene.main
 import android.content.res.Configuration
 import android.os.Bundle
 import fr.tcleard.numberslight.R
+import fr.tcleard.numberslight.core.model.Item
+import fr.tcleard.numberslight.scene.main.detail.DetailFragment
 import fr.tcleard.numberslight.scene.main.list.ListFragment
 import fr.tcleard.numberslight.ui.viewController.AActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -64,7 +66,8 @@ class MainActivity : AActivity<MainPresenter>(), MainPresenter.MainView, ListFra
         }
     }
 
-    override fun showItemDetail() {
+    override fun showItemDetail(item: Item) {
+        (mainDetailFragment as DetailFragment).setItem(item)
     }
 
     override fun quit() {
@@ -73,8 +76,8 @@ class MainActivity : AActivity<MainPresenter>(), MainPresenter.MainView, ListFra
 
     /** Listeners **/
 
-    override fun onItemClicked() {
-        presenter.onItemClicked()
+    override fun onItemClicked(item: Item) {
+        presenter.onItemClicked(item)
     }
 
 }

@@ -6,6 +6,8 @@
     <color name="colorAccent">#FF4081</color>
 
     <color name="white">#FFFFFF</color>
+    <color name="greyLight">#CFCFCF</color>
+    <color name="greyDark">#9E9E9E</color>
     <color name="black">#000000</color>
 
     <color name="transparent">#00000000</color>

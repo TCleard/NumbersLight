@@ -1,5 +1,6 @@
 package fr.tcleard.numberslight.scene.main
 
+import fr.tcleard.numberslight.core.model.Item
 import fr.tcleard.numberslight.core.presenter.APresenter
 import fr.tcleard.numberslight.core.presenter.IView
 import javax.inject.Inject
@@ -28,13 +29,13 @@ class MainPresenter @Inject constructor(
         view?.showDetailFragment(true)
     }
 
-    fun onItemClicked() {
+    fun onItemClicked(item: Item) {
         if (state == State.LIST) {
             state = State.DETAIL
             view?.showListFragment(false)
             view?.showDetailFragment(true)
         }
-        view?.showItemDetail()
+        view?.showItemDetail(item)
     }
 
     fun onBackPressed() {
@@ -52,7 +53,7 @@ class MainPresenter @Inject constructor(
         fun showListFragment(show: Boolean)
         fun showDetailFragment(show: Boolean)
 
-        fun showItemDetail()
+        fun showItemDetail(item: Item)
 
         fun quit()
 

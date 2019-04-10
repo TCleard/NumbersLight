@@ -15,8 +15,19 @@ class ItemViewHolder(
 
     private var imageRequest: IImageManager.ImageRequest? = null
 
+    init {
+        itemView.setOnClickListener {
+            item?.apply {
+                onClicked()
+                itemView.isSelected = isSelected
+            }
+        }
+    }
+
     override fun bind(item: ItemViewModel) {
         super.bind(item)
+
+        itemView.isSelected = item.isSelected
 
         if (imageRequest?.url != item.getImageUrl()) {
             imageRequest?.cancel()

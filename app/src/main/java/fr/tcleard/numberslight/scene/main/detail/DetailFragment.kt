@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import fr.tcleard.numberslight.R
+import fr.tcleard.numberslight.core.model.Item
 import fr.tcleard.numberslight.ui.viewController.AFragment
 import kotlinx.android.synthetic.main.fragment_detail.*
 
@@ -19,8 +20,6 @@ class DetailFragment : AFragment<DetailPresenter>(), DetailPresenter.DetailView 
                 .build()
                 .inject(this)
 
-        presenter.attach(this)
-
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
@@ -28,6 +27,12 @@ class DetailFragment : AFragment<DetailPresenter>(), DetailPresenter.DetailView 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        presenter.attach(this)
+    }
+
+    fun setItem(item: Item) {
+        presenter.setItem(item)
     }
 
 }

@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import fr.tcleard.numberslight.R
+import fr.tcleard.numberslight.core.model.Item
 import fr.tcleard.numberslight.scene.main.list.adapter.ItemAdapter
 import fr.tcleard.numberslight.scene.main.list.adapter.vm.ItemViewModel
 import fr.tcleard.numberslight.ui.viewController.AFragment
@@ -57,11 +58,19 @@ class ListFragment : AFragment<ListPresenter>(), ListPresenter.ListView {
         adapter.setItems(*items.toTypedArray())
     }
 
+    override fun updateItem(item: ItemViewModel) {
+        adapter.update(item)
+    }
+
+    override fun onItemClicked(item: Item) {
+        listener?.onItemClicked(item)
+    }
+
     /** Listeners**/
 
     interface Listener {
 
-        fun onItemClicked()
+        fun onItemClicked(item: Item)
 
     }
 
