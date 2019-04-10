@@ -10,6 +10,8 @@ import kotlinx.android.synthetic.main.fragment_list.*
 
 class ListFragment : AFragment<ListPresenter>(), ListPresenter.ListView {
 
+    var listener: Listener? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -28,6 +30,12 @@ class ListFragment : AFragment<ListPresenter>(), ListPresenter.ListView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    interface Listener {
+
+        fun onItemClicked()
+
     }
 
 }
